@@ -6,12 +6,37 @@ const app = Vue.createApp({
     <p>{{ count }}</p>
 
      <input 
-        v-bind:value="value" 
-        v-on:input="input"
+       type="checkbox"
+       v-model="value"
+       value="a"
      />
     
+     <input 
+       type="checkbox"
+       v-model="value"
+       value="b"
+     />
+
+     {{ value }}
+
+
+    <div>
+        <input type="text"  v-model="textinputvalue">
+        </input>
+    </div>
+    
+    <div class="blue">
+        {{ textinputvalue }}  
+    </div>
+
+    <div>
+        <button v-on:click="textinputvalue = ''">
+            Reset
+        </button>
+    </div>
+
     <div class="red">
-    {{ error }}
+        {{ error }}
     </div>
 
     <div v-for="number in numbers" 
@@ -27,7 +52,8 @@ const app = Vue.createApp({
         return {
             count: 0,
             numbers: [1,2,3,4,5,6,7,8,9,10],
-            value: 'user'
+            value: ['a'],
+            textinputvalue: ' '
         }
     },
 
@@ -46,10 +72,6 @@ const app = Vue.createApp({
     },
 
     methods: {
-        input($event){
-            this.value = $event.target.value
-            
-        },
         increment(){
             this.count +=1
         },
